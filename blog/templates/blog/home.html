@@ -11,7 +11,11 @@
             <div class="media-body">
             <div class="article-metadata">
                 <a class="mr-2" href="#">{{ post.author }}</a>
-                <small class="text-muted">{{ post.date_posted }}</small>
+                <small class="text-muted">Posted</small>
+                <small class="text-muted">{{ post.date_posted|date:"m/d/y fa" }}</small> 
+                <!-- |date is a filter. Diff styles outlined on django date documentation-->
+                <small class = "text-muted">Last updated:</small>
+                <small class="text-muted">{{post.last_modified| date:"m/d/y fa" }}</small>
             </div>
             <h2><a class="article-title" href="#">{{ post.title }}</a></h2>
             <p class="article-content">{{ post.content }}</p>
