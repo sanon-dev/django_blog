@@ -15,14 +15,16 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path, include
+from users import views as user_views
 
 urlpatterns = [
     path('admin/', admin.site.urls),
+    path('register/', user_views.register, name = 'register'),
     # path('blog/', include('blog.urls')),  
     path('', include('blog.urls')), #Removing 'blog/' from pattern makes homepage 
                                     #go straight through localhost:8000 and not localhost:8000/blog
                                     # also this means that localhost:8000/blog/about is now just localhost:8000/about
-                                 
+                       
 ]
 
 

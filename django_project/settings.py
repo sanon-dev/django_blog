@@ -32,6 +32,8 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     'blog.apps.BlogConfig', #This was added in during templating stages 8-15-21
+    'users.apps.UsersConfig', #This was added in during user registartion section 8-23-21
+    'crispy_forms',     # This was added in during user registartion section 8-23-21
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
@@ -124,3 +126,5 @@ STATIC_URL = '/static/'
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+CRISPY_TEMPLATE_PACK = 'bootstrap4' # CSS template we want to uses - added during user registartion section 8-23-21
