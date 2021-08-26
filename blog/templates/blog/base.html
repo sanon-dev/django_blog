@@ -39,17 +39,24 @@
             </button>
             <div class="collapse navbar-collapse" id="navbarToggle">
               <div class="navbar-nav mr-auto">
-                <a class="nav-item nav-link" href="{% url 'blog-home' %}">Home</a>
-                <!-- href above is referencing name blog-home that we made the home page in blog url.py file -->
-                <!-- removes hardcode and having to change this manually but now will just do logic of the thing with name following url -->
-                <a class="nav-item nav-link" href="{% url 'blog-about' %}">About</a>
-                <!-- href above is referencing name blog-about that we made the about page in blog url.py file -->
+                {% if user.is_authenticated %}
+                <!-- user is defined by django, not us. Above is checking if user is logged in. If yes, "Home" link is feed, else login screen -->
+                  <a class="nav-item nav-link" href="{% url 'blog-home' %}">Home</a>
+                {% else %}
+                  <a class="nav-item nav-link" href="{% url 'login' %}">Home</a>
+                {% endif %}
 
+                <a class="nav-item nav-link" href="{% url 'blog-about' %}">About</a>
               </div>
               <!-- Navbar Right Side -->
               <div class="navbar-nav">
-                <a class="nav-item nav-link" href="#">Login</a>
-                <a class="nav-item nav-link" href="#">Register</a>
+                {% if user.is_authenticated %}
+                  <a class="nav-item nav-link" href="{% url 'profile' %}">Profile</a>
+                  <a class="nav-item nav-link" href="{% url 'logout' %}">Logout</a>
+                {% else %}
+                  <a class="nav-item nav-link" href="{% url 'login' %}">Login</a>
+                  <a class="nav-item nav-link" href="{% url 'register' %}">Register</a>
+                {% endif %}
               </div>
             </div>
           </div>

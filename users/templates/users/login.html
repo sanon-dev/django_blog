@@ -11,18 +11,18 @@
             <fieldset class = "form-group"> 
             <!-- classes in elements are bootstrap classes -->
                 <legend class = "border-bottom mb-4">
-                    Join Today
+                    Log-In
                 </legend>
                 {{ form| crispy}}
                 <!-- above means form using crispy filter. vertical bar indicates a filter -->
             </fieldset>
             <div class = "form-group">
-                <button class = "btn btn-outline-info" type = "submit">Sign Up</button>
+                <button class = "btn btn-outline-info" type = "submit">Log-In</button>
             </div>
         </form>
         <div class = "border-top pt-3">
             <small class = "text-muted">
-                Already have an account? <a class = "ml-2" href="{% url 'login' %}">Sign In</a>
+                Want to create an account? Sign Up <a class = "ml-2" href="{% url 'register' %}"> Here</a>
             </small>
         </div>
     </div>
