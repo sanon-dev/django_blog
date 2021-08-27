@@ -12,3 +12,6 @@ class Post(models.Model):
 
     def __str__(self):
         return self.title
+
+# Models are classes that contain data about an object/functionality. Django authomatically makes
+# table in database based on model's information. 
