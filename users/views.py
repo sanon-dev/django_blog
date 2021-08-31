@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect # redirect added manually
 # from django.contrib.auth.forms import UserCreationForm # creates user with no priviges from given user and pass # replaced with userregistartion form
 from django.contrib import messages # Imported to use to create pop up messgae that acct created 
-from .forms import UserRegisterForm
+from .forms import UserRegisterForm, UserUpdateForm, ProfileUpdateForm
 from django.contrib.auth.decorators import login_required # Importing a decorator to make sure only logged in users can see profile page
 
 def register(request):
@@ -18,4 +18,23 @@ def register(request):
     
 @login_required     # <- that is known as a decorator - allows user to add functionality to an object
 def profile(request):
-    return render(request, 'users/profile.html')
+    if request.method == 'POST':
+        user_form = UserUpdateForm(request.POST, instance = request.user)
+        profile_form = ProfileUpdateForm(request.POST, request.FILES, instance = request.user.profile)
+        # Instances in the form parameters used to populate the respective fields
+        if user_form.is_valid() and profile_form.is_valid():
+            user_form.save()
+            profile_form.save()
+            messages.success(request, f'Your account has been updated.')
+            return redirect('profile')
+    else:
+        user_form = UserUpdateForm(instance = request.user)
+        profile_form = ProfileUpdateForm(instance = request.user.profile)
+            
+
+    context = {
+        'user_form': user_form,
+        'profile_form': profile_form
+    }
+
+    return render(request, 'users/profile.html', context)

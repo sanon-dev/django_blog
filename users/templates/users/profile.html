@@ -1,22 +1,32 @@
 {% extends "blog/base.html" %}
-<!-- above line is taking the starting bit of code from base.html until block content tag -->
-
 {% load crispy_forms_tags %} 
-<!-- allows us to use crispy filter on any form -->
 {% block content %}
-
-    <!-- following code snippet taken from corey schafer profile.html for django blog on github -->
 
     <div class="content-section">
         <div class="media">
-        <img class="rounded-circle account-img" src="{{ user.profile.image.url }}">
-        <div class="media-body">
-            <h2 class="account-heading">{{ user.username }}</h2>
-            <p class="text-muted font-italic">{{ user.email }}</p>
-            <!-- <p class = 'text-*-center text-secondary'>{{ user.bio }}</p> -->
-            <!-- Not doing above now but idea for later, extend User class to have bio section like UserCreation in user/forms -->
+            <img class="rounded-circle account-img" src="{{ user.profile.image.url }}">
+            <div class="media-body">
+                <h2 class="account-heading">{{ user.username }}</h2>
+                <p class="text-muted font-italic">{{ user.email }}</p>
+                <!-- <p class = 'text-*-center text-secondary'>{{ user.bio }}</p> -->
+                <!-- Not doing above now but idea for later, extend User class to have bio section like UserCreation in user/forms -->
+            </div>
         </div>
-        </div>
-        <!-- FORM HERE -->
+        <form method="POST" enctype="multipart/form-data">
+        <!-- encode type "multipart/form-data" for image file upload to work -->
+            {% csrf_token %} 
+            <!-- above is required by django for security -->
+            <fieldset class = "form-group"> 
+                <legend class = "border-bottom mb-4">
+                    Profile Info
+                </legend>
+                {{ user_form| crispy}}
+                {{ profile_form | crispy}}
+            </fieldset>
+            <div class = "form-group">
+                <button class = "btn btn-outline-info" type = "submit">Update</button>
+            </div>
+        </form>
+        <!-- Form contains both user_update form and profile_update form -->
     </div>
 {% endblock content %}
