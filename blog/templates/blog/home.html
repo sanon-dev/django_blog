@@ -18,7 +18,8 @@
                 <small class = "text-muted">Last updated:</small>
                 <small class="text-muted">{{post.last_modified| date:"m/d/y fa" }}</small>
             </div>
-            <h2><a class="article-title" href="#">{{ post.title }}</a></h2>
+            <h2><a class="article-title" href= "{% url 'post-detail' post.id %}">{{ post.title }}</a></h2>
+            <!-- post.id = pk in urlpatter for post-detail -->
             <p class="article-content">{{ post.content }}</p>
             </div>
         </article>
