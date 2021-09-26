@@ -24,14 +24,18 @@ class PostListView(ListView):
     ordering = ['-date_posted'] # reverse chronological order, check to see if inherits all this stuff from listview
     paginate_by = 4 # Sets num of posts per page
 ```
+The main view users will see when first entering the site, containting posts made to the site in reverse chronological order with 4 post per page.  
+
 
 - UserPostListView (within users/views.py)
-Nearly identical to PostListView with an additional function to filter out posts to just those written by the user.
 ```python
 def get_queryset(self):   #Overriden function
   user = get_object_or_404(User, username=self.kwargs.get('username'))
   return Post.objects.filter(author = user).order_by('-date_posted')
 ```
+Nearly identical to PostListView with an additional function to filter out posts to just those written by the user. 
+This function (and class which it is in) are used in the User Posts page, which houses users' post activity. 
+
 
 - profile (within blog/views.py)
 ```python
@@ -58,3 +62,19 @@ def profile(request):
 
     return render(request, 'users/profile.html', context)
 ```
+Used for the Profile page, which only is accessible to logged-in users. From this page, users can update their username and email via Django forms.
+Pictures can also be uploaded/updated from this page with backend being done through PIL.
+
+## Issues
+Only major issue at this time is regarding profile pictures, as an "Image not found" icon is shown in place where these pictures should be. PIL has been uninstalled and
+reinstalled but no avail in regards of the problem. Branch was made from the point where this issue was discovered, and will be addressed when more time becomes available.
+
+## ToDos
+- [X] Route URLS for homepage and about page.
+- [X] Create first templates, about.html and home.html, and inherit them to serve as base for others
+- [X] Build out Post model, create Users app and code functionality for sign up 
+- [X] Implement auth using Django prebuilts and add apprporiate url paths for Login/logout
+- [ ] Add PIL to project and implement profile pictures using it through a Profile model (NEEDS ATTENTION)
+- [X] Replace function based views with class-based views 
+- [X] Implement pagination .
+- [ ] Deploy
