@@ -1,9 +1,10 @@
 from django.urls import path
 from . import views
-from .views import PostListView, PostDetailView, PostCreateView, PostUpdateView, PostDeleteView
+from .views import PostListView, PostDetailView, PostCreateView, PostUpdateView, PostDeleteView, UserPostListView
 
 urlpatterns = [
     path('', PostListView.as_view(), name = 'blog-home'),
+    path('user/<str:username>', UserPostListView.as_view(), name = 'user-posts'),
     path('about/', views.about, name = 'blog-about'),
     path('post/<int:pk>/', PostDetailView.as_view(), name = 'post-detail'), #pk acts as a variable since multiple different posts could be called through it - what detailview expects
     path('post/new/', PostCreateView.as_view(), name = 'post-create'),

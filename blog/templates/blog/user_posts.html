@@ -4,14 +4,15 @@
 
 
 {% block content %}
-
+    <h1 class = "mb-3">Posts by {{ view.kwargs.username }} ({{page_obj.paginator.count}})</h1>
     {% for post in posts %} 
         <!-- following code snippet from corey schafer article.html github -->
         <article class="media content-section">
             <img class = "rounded-circle article-img" src="{{post.author.profile.image.url}}">
             <div class="media-body">
             <div class="article-metadata">
-                <a class="mr-2" href="{% url 'user-posts' post.author.username %}">{{ post.author }}</a>                <small class="text-muted">Posted</small>
+                <a class="mr-2" href="{% url 'user-posts' post.author.username %}">{{ post.author }}</a>
+                <small class="text-muted">Posted</small>
                 <small class="text-muted">{{ post.date_posted|date:"m/d/y fa" }}</small> 
                 <!-- |date is a filter. Diff styles outlined on django date documentation-->
                 <small class = "text-muted">Last updated:</small>
