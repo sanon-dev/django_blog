@@ -9,7 +9,7 @@ urlpatterns = [
     path('post/<int:pk>/', PostDetailView.as_view(), name = 'post-detail'), #pk acts as a variable since multiple different posts could be called through it - what detailview expects
     path('post/new/', PostCreateView.as_view(), name = 'post-create'),
     path('post/<int:pk>/update/', PostUpdateView.as_view(), name = 'post-update'),
-    path('post/<int:pk>/delete/', PostDeleteView.as_view(), name = 'post-delete')
+    path('post/<int:pk>/delete/', PostDeleteView.as_view(), name = 'post-delete'),
 ]
 
 #Views.home is function from views.py that returns HTTP repsonse

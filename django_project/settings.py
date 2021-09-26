@@ -12,6 +12,8 @@ https://docs.djangoproject.com/en/3.2/ref/settings/
 
 from pathlib import Path
 import os
+import myEnvVal #Location of system variables for email login
+myEnvVal.setVar() 
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 
@@ -139,3 +141,10 @@ CRISPY_TEMPLATE_PACK = 'bootstrap4' # CSS template we want to uses - added durin
 LOGIN_REDIRECT_URL = 'blog-home'
 LOGIN_URL = 'login'
 # ^names of URL patterns in ''
+
+EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+EMAIL_HOST = 'smtp.gmail.com'
+EMAIL_PORT = 587
+EMAIL_USE_TLS = True
+EMAIL_HOST_USER = os.environ.get('EMAIL_USER') # Sensitive info stored in environment variables - set in myEnvVar.py file imported
+EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_PASS')
