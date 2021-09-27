@@ -1,6 +1,6 @@
 # django_blog
 
-This blog was created as a summer programming to sharpen skills and take the time to learn a new tech stack. 
+This blog was created as a summer programming project to sharpen skills and learn a new tech stack. 
 
 ## Site Dependencies 
 
@@ -11,7 +11,7 @@ This blog was created as a summer programming to sharpen skills and take the tim
 ![diagram](https://user-images.githubusercontent.com/47250909/134819642-e0d11314-4f13-4488-8436-a45cd6e6c8a2.png)
 *A photo of the home page of this blog side by side with the HTML template for page structure (top) and post layout (bottom)*
 
-Django projects runs under a model-view-controller (MVC) framwork, with a URL launcher serving as the controller which users interact with by clicking through different sections of the site. This controller updates class-based models (written in Python), which then update the view seen by users with function-specific HTML/CSS. For this site, two internal applications made up the projects - users and blog. The former handles all user-related needs and the latter containing all info for the various different blog pages. 
+Django projects run under a model-view-controller (MVC) framwork, with a URL launcher serving as the controller which users interact with by clicking through different sections of the site. This controller updates class-based models (written in Python), which then update the view seen by users with function-specific HTML/CSS. For this site, two internal applications made up the project - users and blog. The former handles all user-related needs and the latter containing all info for the various different blog pages. 
 
 Major class-based views within this project include:
 
