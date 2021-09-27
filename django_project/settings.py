@@ -24,7 +24,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 # See https://docs.djangoproject.com/en/3.2/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-0dh7=s2duu45z0#c@)@57sm2+&%!6-@#r6m2)a3qk@ce9%7xzl'
+SECRET_KEY = os.environ.get('DJANGO_SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
@@ -36,8 +36,8 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     'blog.apps.BlogConfig', #This was added in during templating stages 8-15-21
-    'users.apps.UsersConfig', #This was added in during user registartion section 8-23-21
-    'crispy_forms',     # This was added in during user registartion section 8-23-21
+    'users.apps.UsersConfig', #This was added in during user registration section 8-23-21
+    'crispy_forms',     # This was added in during user registration section 8-23-21
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',

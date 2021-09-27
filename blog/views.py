@@ -10,7 +10,7 @@ from django.views.generic import (
 )
 from .models import Post #. infront of models means from models file in current package
 
-#from django.http import HttpResponse #No longer needed if using render
+
 
 
 #Return what we want user to see when they go to this route

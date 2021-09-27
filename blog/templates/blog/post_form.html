@@ -1,5 +1,4 @@
 {% extends "blog/base.html" %}
-<!-- above line is taking the starting bit of code from base.html until block content tag -->
 
 {% load crispy_forms_tags %} 
 <!-- allows us to use crispy filter on any form -->
@@ -9,7 +8,6 @@
             {% csrf_token %} 
             <!-- above is required by django for security -->
             <fieldset class = "form-group"> 
-            <!-- classes in elements are bootstrap classes -->
                 <legend class = "border-bottom mb-4">
                     Blog Post
                 </legend>

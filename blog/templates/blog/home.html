@@ -11,7 +11,8 @@
             <img class = "rounded-circle article-img" src="{{post.author.profile.image.url}}">
             <div class="media-body">
             <div class="article-metadata">
-                <a class="mr-2" href="{% url 'user-posts' post.author.username %}">{{ post.author }}</a>                <small class="text-muted">Posted</small>
+                <a class="mr-2" href="{% url 'user-posts' post.author.username %}">{{ post.author }}</a>                
+                <small class="text-muted">Posted</small>
                 <small class="text-muted">{{ post.date_posted|date:"m/d/y fa" }}</small> 
                 <!-- |date is a filter. Diff styles outlined on django date documentation-->
                 <small class = "text-muted">Last updated:</small>
@@ -22,7 +23,7 @@
             <p class="article-content">{{ post.content }}</p>
             </div>
         </article>
-    <!-- How to write logic in html -->
+
     {% endfor %}
     {% if is_paginated %}
 

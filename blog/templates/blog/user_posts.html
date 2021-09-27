@@ -1,12 +1,10 @@
 {% extends "blog/base.html" %}
-<!-- above line is taking the starting bit of code from base.html until block content tag -->
-<!-- known as template inheritance -->
+
 
 
 {% block content %}
     <h1 class = "mb-3">Posts by {{ view.kwargs.username }} ({{page_obj.paginator.count}})</h1>
     {% for post in posts %} 
-        <!-- following code snippet from corey schafer article.html github -->
         <article class="media content-section">
             <img class = "rounded-circle article-img" src="{{post.author.profile.image.url}}">
             <div class="media-body">
@@ -14,7 +12,6 @@
                 <a class="mr-2" href="{% url 'user-posts' post.author.username %}">{{ post.author }}</a>
                 <small class="text-muted">Posted</small>
                 <small class="text-muted">{{ post.date_posted|date:"m/d/y fa" }}</small> 
-                <!-- |date is a filter. Diff styles outlined on django date documentation-->
                 <small class = "text-muted">Last updated:</small>
                 <small class="text-muted">{{post.last_modified| date:"m/d/y fa" }}</small>
             </div>
@@ -23,9 +20,10 @@
             <p class="article-content">{{ post.content }}</p>
             </div>
         </article>
-    <!-- How to write logic in html -->
+
     {% endfor %}
     {% if is_paginated %}
+    <!-- Checks if pagination var declared in Post model and depending on ans + how many pages - various styles pagination -->
 
       {% if page_obj.has_previous %}
         <a class="btn btn-outline-info mb-4" href="?page=1">First</a>
@@ -47,4 +45,3 @@
 
     {% endif %}
 {% endblock content %}
-<!-- then using above block content in its place -->

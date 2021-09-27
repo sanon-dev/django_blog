@@ -25,5 +25,4 @@ class Profile(models.Model):
             img.thumbnail(output_size)  #Resize img and save
             img.save(self.image.path)
 
-# Models are classes that contain data about an object/functionality. Django authomatically makes
-# table in database based on model's information. 
+ 
